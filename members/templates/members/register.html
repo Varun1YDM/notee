@@ -1,0 +1,123 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% tailwind_css %}
+  </head>
+  <body class="bg-slate-300 min-w-full min-h-dvh">
+    <div class="flex items-center justify-center mb-16 p-4">
+      <svg
+        width="200"
+        height="100"
+        class="md:w-32"
+        viewBox="0 0 62 11"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M10.9369 6.67C10.8969 6.6 10.8769 6.505 10.8769 6.385C10.8769 6.255 10.8869 6.11 10.9069 5.95H10.7869L10.0819 10H7.23188L8.88188 0.625H11.5669L13.0969 3.955C13.1269 4.025 13.1419 4.125 13.1419 4.255C13.1419 4.375 13.1319 4.515 13.1119 4.675H13.2319L13.9519 0.625H16.8019L15.1519 10H12.4669L10.9369 6.67ZM6.78188 9.955L0.421875 9.28H6.90188L6.78188 9.955ZM7.29188 7.06L0.931875 6.385H7.41188L7.29188 7.06ZM7.54688 5.62L1.18687 4.945H7.66688L7.54688 5.62ZM7.80188 4.18L1.44187 3.505H7.92188L7.80188 4.18ZM8.05688 2.74L1.69687 2.065H8.16188L8.05688 2.74ZM7.03688 8.5L0.676875 7.825H7.15688L7.03688 8.5ZM8.29688 1.3L1.95187 0.625H8.41688L8.29688 1.3ZM24.0557 7.66C24.4457 7.66 24.7357 7.615 24.9257 7.525C25.1157 7.425 25.2407 7.205 25.3007 6.865L25.9907 2.965H24.7907C24.4107 2.965 24.1257 3.015 23.9357 3.115C23.7457 3.205 23.6207 3.42 23.5607 3.76L22.8707 7.66H24.0557ZM25.2857 0.399999C26.5557 0.399999 27.4607 0.649999 28.0007 1.15C28.5407 1.64 28.8107 2.4 28.8107 3.43C28.8107 4.46 28.6457 5.54 28.3157 6.67C27.9957 7.79 27.4807 8.665 26.7707 9.295C26.0707 9.915 25.0407 10.225 23.6807 10.225C22.3307 10.225 21.3857 9.98 20.8457 9.49C20.3057 8.99 20.0357 8.225 20.0357 7.195C20.0357 6.705 20.1057 6.06 20.2457 5.26C20.3857 4.45 20.5707 3.755 20.8007 3.175C21.0307 2.585 21.3407 2.075 21.7307 1.645C22.4807 0.814999 23.6657 0.399999 25.2857 0.399999ZM19.8107 5.245C19.7907 5.325 19.7707 5.435 19.7507 5.575L13.8557 4.945H19.8557L19.8107 5.245ZM19.6457 6.385C19.6157 6.615 19.6007 6.825 19.6007 7.015L13.6907 6.385H19.6457ZM20.2157 3.505L20.0357 4.12L14.2157 3.505H20.2157ZM19.6157 7.825C19.6557 8.105 19.6907 8.315 19.7207 8.455L13.8857 7.825H19.6157ZM20.8307 2.065C20.6907 2.325 20.5907 2.525 20.5307 2.665L14.9207 2.065H20.8307ZM20.0657 9.28C20.1957 9.51 20.3457 9.695 20.5157 9.835L15.3257 9.28H20.0657ZM22.2557 0.625C21.9657 0.804999 21.7407 0.969999 21.5807 1.12L16.9907 0.625H22.2557ZM40.2021 3.025H38.1321L36.9171 10H34.0671L35.2821 3.025H33.2271L33.6621 0.625H40.6371L40.2021 3.025ZM33.6021 9.955L27.2421 9.28H33.7221L33.6021 9.955ZM34.1121 7.06L27.7521 6.385H34.2321L34.1121 7.06ZM34.3671 5.62L28.0071 4.945H34.4871L34.3671 5.62ZM34.6221 4.18L28.2621 3.505H34.7421L34.6221 4.18ZM33.8571 8.5L27.4971 7.825H33.9771L33.8571 8.5ZM32.8221 2.74L26.4621 2.065H32.9271L32.8221 2.74ZM33.0621 1.3L26.7171 0.625H33.1821L33.0621 1.3ZM49.4355 6.46H46.5855L46.3905 7.6H49.8855L49.4655 10H43.1205L44.7705 0.625H51.0405L50.2605 3.025H47.1855L46.9755 4.285H49.8255L49.4355 6.46ZM42.6705 9.955L36.3105 9.28H42.7905L42.6705 9.955ZM43.1805 7.06L36.8205 6.385H43.3005L43.1805 7.06ZM43.4355 5.62L37.0755 4.945H43.5555L43.4355 5.62ZM43.6905 4.18L37.3305 3.505H43.8105L43.6905 4.18ZM43.9455 2.74L37.5855 2.065H44.0505L43.9455 2.74ZM42.9255 8.5L36.5655 7.825H43.0455L42.9255 8.5ZM44.1855 1.3L37.8405 0.625H44.3055L44.1855 1.3ZM60.3193 6.46H57.4693L57.2743 7.6H60.7693L60.3493 10H54.0043L55.6543 0.625H61.9243L61.1443 3.025H58.0693L57.8593 4.285H60.7093L60.3193 6.46ZM53.5543 9.955L47.1943 9.28H53.6743L53.5543 9.955ZM54.0643 7.06L47.7043 6.385H54.1843L54.0643 7.06ZM54.3193 5.62L47.9593 4.945H54.4393L54.3193 5.62ZM54.5743 4.18L48.2143 3.505H54.6943L54.5743 4.18ZM54.8293 2.74L48.4693 2.065H54.9343L54.8293 2.74ZM53.8093 8.5L47.4493 7.825H53.9293L53.8093 8.5ZM55.0693 1.3L48.7243 0.625H55.1893L55.0693 1.3Z"
+          fill="url(#paint0_linear_1_12)"
+        />
+        <defs>
+          <linearGradient
+            id="paint0_linear_1_12"
+            x1="33"
+            y1="-10"
+            x2="33"
+            y2="19"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0.404" stop-color="#0500FF" />
+            <stop offset="0.759" />
+            <stop offset="1" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <div id="main" class="ml-2 flex items-center justify-center">
+      <div
+        class="h-96 flex items-center justify-center bg-gradient-to-r from-purple-400 via-pink-500 to-red-500"
+      >
+        <div class="relative">
+          <div
+            class="absolute -top-2 -left-2 -right-2 -bottom-2 rounded-lg bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 shadow-lg animate-pulse"
+          ></div>
+          <div
+            id="form-container"
+            class="bg-white p-16 rounded-lg shadow-2xl w-80 relative z-10 transform transition duration-500 ease-in-out"
+          >
+            <h2
+              id="form-title"
+              class="text-center text-3xl font-bold mb-10 text-gray-800"
+            >
+              Register
+            </h2>
+            <form class="space-y-5" action="{% url 'register' %}" method="post">
+              {% csrf_token %}
+              <input
+              onmouseout="handlepassAnim()"
+              class="w-full h-12 border border-gray-800 px-3 rounded-lg border-1 border-gradient-to-r from-purple-400 mb-32 via-pink-500 to-red-500 shadow-lg animate-bounce focus:animate-none"
+              placeholder="Email"
+              id="remail"
+              name="remail"
+              type="email"
+            />
+              <input
+                onmouseout="handleuserAnim()"
+                class="w-full mb-2 h-12 border-2 border-gray-800 px-3 rounded-lg border-1 border-gradient-to-r from-purple-400 via-pink-500 to-red-500 shadow-lg animate-bounce focus:animate-none"
+                placeholder="Username"
+                id="rusername"
+                name="rusername"
+                type="text"
+              />
+              <input
+                onmouseout="handlepassAnim()"
+                class="w-full h-12 border border-gray-800 px-3 rounded-lg border-1 border-gradient-to-r from-purple-400 mb-32 via-pink-500 to-red-500 shadow-lg animate-bounce focus:animate-none"
+                placeholder="Password"
+                id="rpassword"
+                name="rpassword"
+                type="password"
+              />
+
+              <!-- <input
+                onmouseout="handlepassAnim()"
+                class="w-full h-12 border border-gray-800 px-3 rounded-lg border-1  mb-2 border-gradient-to-r from-purple-400 via-pink-500 to-red-500 shadow-lg animate-bounce focus:animate-none"
+                placeholder="Confirm Password"
+                id="rcpassword"
+                name="rcpassword"
+                type="password"
+              /> -->
+              <button
+              type="submit"
+                class="w-full h-12 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              >
+                Sign in
+              </button>
+            </form>
+            <button  class="mt-2 font-semibold  text-cyan-500">
+              <a href="{% url 'login' %}" class="no-underline">Login</a>
+            </button>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function handleuserAnim() {
+        let username = document.getElementById("lusername");
+        if (username.textContent != "") username.style.animation = "none";
+      }
+
+      function handlepassAnim() {
+        let password = document.getElementById("lpassword");
+        if (username.textContent != "") password.style.animation = "none";
+      }
+    </script>
+  </body>
+</html>

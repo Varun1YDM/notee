@@ -1,0 +1,125 @@
+<link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+
+{% comment %}
+<!-- {% load static tailwind_tags %}
+<html>
+  <head>
+    <title>Web Page</title>
+
+    {% tailwind_css %}
+  </head>
+  <h1>Hello</h1>
+  <p>This is my project</p>
+</html> -->
+{% endcomment %} 
+
+
+from django.shortcuts import render, redirect
+from django.views.generic import View, TemplateView
+from django.contrib.auth import login, logout, authenticate
+from django.contrib import messages
+from django.contrib.auth.models import User
+from django.db import IntegrityError
+
+from .models import Verification
+
+
+# Create your views here.
+
+def home(request):
+  return render(request,'members/home.html')
+
+
+def Action(request):
+    return render(request,'members/Actions.html')
+
+
+def login(request):
+    if request.method == 'POST':
+        lusername = request.POST.get('lusername')
+        lpassword = request.POST.get('lpassword')
+        
+        try:
+            # Check if the user exists with the provided username and password
+            user = Verification.objects.filter(rusername=lusername, rpassword=lpassword)
+            # If user exists, redirect to success page or do whatever is required
+            # For example, you can redirect to a dashboard page
+            if user is not None :
+              return redirect('user')  # Change 'dashboard' to your desired URL name
+            
+        except Verification.DoesNotExist:
+            # If user does not exist, display error message
+            messages.error(request, "Invalid username or password.")
+            return redirect('login')  # Redirect back to login page with error message
+            
+    # If request method is not POST, render the login.html template
+    return render(request, 'members/login.html')
+  
+ 
+
+
+def register(request):
+    if request.method == 'POST':
+        username = request.POST.get('rusername')
+        email = request.POST.get('remail')
+        password = request.POST.get('rpassword')
+        
+        try:
+            # Check if a user with the same username and email exists
+            existing_user = Verification.objects.filter(rusername=username, remail=email).exists()
+            if existing_user:
+                messages.error(request, "User already exists.")
+                return redirect('home')  # Redirect to home or wherever you want
+                
+            # If the user does not exist, create a new Verification object and save it
+            new_user = Verification(rusername=username, remail=email, rpassword=password)
+            new_user.save() 
+            
+            messages.success(request, "Registration successful. Please login.")
+            return redirect('login')  # Redirect to login page after successful registration
+        except IntegrityError:
+            messages.error(request, "An error occurred during registration.")
+            return redirect('home')  # Redirect to home or wherever you want
+
+    # If request method is not POST, render the register.html template
+    return render(request, 'members/register.html')
+
+# class RegisterView(TemplateView):
+#     template_name = 'members/register.html'
+    
+#     def post(self, request):
+#         username = request.POST.get('rusername')
+#         email = request.POST.get('remail')
+#         password = request.POST.get('rpassword')
+#         confpassword = request.POST.get('rcpassword')
+        
+#         if password != confpassword:
+#             messages.error(request, "Passwords do not match.")
+#             return render(request, self.template_name)
+
+#         try:
+#             User.objects.create_user(username=username, email=email, password=password)
+            
+#             messages.success(request,("Registration is succesful"))
+#             return redirect('login')
+#         except IntegrityError:
+#             messages.success(request,("User already Exists"))
+#             return render(request, self.template_name)
+
+
+
+def user(request):
+  return render( request , 'members/user.html' )
+
+def logout_view(request):
+    logout(request)
+    return redirect('home.html')
+  
+  
+  
+# 2 cmds 
+# 1) python manage.py runserver
+# 2) python manage.py tailwind start

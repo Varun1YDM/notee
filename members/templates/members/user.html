@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NOTEE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-blue-100">
+    <div id="main" class="">
+      <!-- Header -->
+      <nav
+        class="flex justify-between items-center px-2 py-2 md:py-2 p-3 mx-2 md:mx-4 mt-4 md:mt-2"
+      >
+        <div class="flex items-center gap-2 md:gap-7" id="">
+          <h2
+            class="text-xl md:text-2xl font-semibold md:font-bold py-2 px-4 md:py-2 md:px-4 text-white bg-blue-500 rounded-full"
+          >
+            {{symbol}}
+          </h2>
+          <div>
+            <input
+              type="text"
+              placeholder="search....."
+              class="border border-blue-300 font-lg md:font-xl sm:minmin-w-36 md:w-80 py-1 px-3 md:py-1.5 md:px-6 rounded-md"
+            />
+          </div>
+        </div>
+        <div class="logout">
+          <a
+            href="{% url 'logout' %}"
+            class="text-red-600 hover:bg-red-200 rounded-full md:text2xl font-semibold md:font-bold p-2"
+            >Logout</a
+          >
+        </div>
+      </nav>
+      <!-- close Header -->
+
+      <!-- start add item modal -->
+      <div
+        id="static-modal1"
+        data-modal-backdrop="static"
+        tabindex="-1"
+        aria-hidden="true"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+      >
+        <div class="relative p-4 w-full max-w-2xl max-h-full">
+          <!-- Modal content -->
+          <div class="relative bg-slate-300 rounded-lg shadow">
+            <!-- Modal header -->
+            <div
+              class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
+            >
+              <h3 class="text-xl text-gray-900 font-extrabold">Add New Note</h3>
+              <button
+                type="button"
+                class="text-gray-400 hover:text-red-700 hover:bg-red-300 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                data-modal-hide="static-modal1"
+              >
+                <svg
+                  class="w-3 h-3"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 14"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                  />
+                </svg>
+                <span class="sr-only">Close modal</span>
+              </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-4 md:p-5 space-y-4">
+              <form action="{% url 'user' %}" method="post">
+                {%csrf_token%}
+                <input
+                  type="text"
+                  name="title"
+                  placeholder="Title"
+                  class="text-base leading-relaxed t bg-blue-200 border-2 border-blue-900 mb-4 w-full font-semibold px-4 py-2 dark:text-black"
+                />
+                <br />
+
+                <textarea
+                  name="description"
+                  cols="10"
+                  rows="10"
+                  placeholder="Note"
+                  class="text-base w-full leading-relaxed px-6 py-4 bg-blue-200 border-1 border-blue-900 font-semibold dark:text-black text-black"
+                ></textarea>
+                <div
+                  class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600"
+                >
+                  <button
+                    data-modal-hide="static-modal1"
+                    type="submit"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  >
+                    Save
+                  </button>
+                  <button
+                    data-modal-hide="static-modal1"
+                    type="button"
+                    class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end close add item modal -->
+
+      <!-- start name with add item -->
+      <div
+        class="flex items-center px-2 py-2 md:py-2 p-3 justify-between"
+        id="adding"
+      >
+        <div id="name">
+          <h1 class="px-3.5 py-1 md:px-6 md:py-4 text-3xl md:text-4xl">
+            <span class="text-blue-800 font-bold">Hey, </span>{{user}}
+          </h1>
+        </div>
+        <div class="mx-2.5" id="addnote">
+          <button
+            data-modal-target="static-modal1"
+            data-modal-toggle="static-modal1"
+            type="button"
+            class="py-[7px] px-4 flex items-center justify-center md:py-2 md:px-4 bg-blue-500 rounded-full text-md md:text-xl text-white"
+          >
+            <span class="text-2xl">+</span>
+            <span class="hidden md:block">AddNote</span>
+          </button>
+        </div>
+      </div>
+      <!-- end name with add item -->
+
+      <!-- modal of note -->
+
+      <div
+        id="static-modal2"
+        data-modal-backdrop="static"
+        tabindex="-1"
+        aria-hidden="true"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+      >
+        <div class="relative p-4 w-full max-w-2xl max-h-full">
+          <!-- Modal content -->
+          <div class="relative bg-slate-300 rounded-lg shadow">
+            <!-- Modal header -->
+            <div
+              class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
+            >
+              <h3 class="text-xl text-gray-900 font-extrabold">Date</h3>
+              <button
+                type="button"
+                class="text-gray-400 hover:text-red-700 hover:bg-red-300 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                data-modal-hide="static-modal2"
+              >
+                <svg
+                  class="w-3 h-3"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 14"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                  />
+                </svg>
+                <span class="sr-only">Close modal</span>
+              </button>
+            </div>
+            <!-- Modal body -->
+            <form action="{% url 'update' %}" method="post">
+              <div class="p-4 md:p-5 space-y-4 flex flex-col">
+                {%csrf_token%}
+                <input
+                  type="text"
+                  name="title"
+                  placeholder="Title"
+                  class="title_show text-base w-full mb-4 leading-relaxed t bg-blue-200 border-2 border-blue-900 font-semibold px-4 py-2 dark:text-black"
+                />
+                <br />
+                <textarea
+                  name="description"
+                  cols="30"
+                  rows="10"
+                  placeholder="Note"
+                  class="description_show text-base leading-relaxed px-6 py-4 bg-blue-200 border-1 w-full border-blue-900 font-semibold dark:text-black text-black"
+                ></textarea>
+                <input type="text" name="uuid" class="uuid hidden" />
+              </div>
+              <!-- Modal footer -->
+              <div
+                class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600"
+              >
+                <button
+                  data-modal-hide="static-modal2"
+                  type="submit"
+                  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  Update
+                </button>
+                <button
+                  data-modal-hide="static-modal2"
+                  type="submit"
+                  formaction="{% url 'delete' %}"
+                  class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+                >
+                  Delete
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- end modal of note-->
+
+      <!-- start grid of note -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-10 gap-x-10 px-14 py-4 place-items-center"
+      >
+        {%for note in notes%}
+        <button
+          data-modal-target="static-modal2"
+          data-modal-toggle="static-modal2"
+          type="button"
+          class="note-btn"
+        >
+          <div
+            id="toggle-modal"
+            class="w-64 cursor-pointer border-2 border-blue-400 text-ellipsis bg-white px-4 py-2 border-2 rounded-lg shadow-md hover:shadow-xl"
+          >
+            <h2
+              class="card-title font-bold text-xl mb-3 text-blue-500 text-ellipsis overflow-hidden"
+            >
+              {{note.title}}
+            </h2>
+            <p class="card-des text-ellipsis w-52 h-48 overflow-hidden">
+              {{note.notes}}
+            </p>
+            <p class="text-end text-sm text-slate-400">
+              {{note.last_modified}}
+            </p>
+            <p class="card-id hidden text-end text-sm text-slate-400">
+              {{note.id}}
+            </p>
+          </div>
+        </button>
+        {%endfor%}
+      </div>
+      <!-- end grid of note -->
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+
+    <script>
+      let elements = document.getElementsByClassName("note-btn");
+
+      for (let element of elements) {
+        element.onclick = function () {
+          let title = this.querySelector(".card-title").innerText;
+          let description = this.querySelector(".card-des").innerText;
+          let id = this.querySelector(".card-id").innerText;
+
+          console.log(title);
+
+          document.getElementsByClassName("title_show")[0].value = title;
+          document.getElementsByClassName("description_show")[0].value =
+            description;
+          document.getElementsByClassName("uuid")[0].value = id;
+        };
+      }
+    </script>
+  </body>
+</html>

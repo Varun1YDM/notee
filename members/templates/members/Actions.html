@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+      }
+      .containor {
+        display: flex;
+        .Actions {
+          background-color: rgb(244, 239, 229);
+          padding: 10px 25px;
+          .innerblock {
+            display: flex;
+            align-items: center;
+
+            padding: 10px 2vw;
+            gap: 2vw;
+            input {
+              width: fit-content;
+              padding: 8px 12px;
+              width: 120px;
+              border-radius: 10px;
+              outline: none;
+              border: none;
+              font-size: 18px;
+            }
+            p {
+              color: #0275d8;
+              font-size: 18px;
+            }
+            #liveTimeInput {
+              border: 1px solid #51fe63;
+            }
+          }
+          button {
+            display: flex;
+            align-items: center;
+            border: none;
+            background-color: #51fe63;
+            border-radius: 10px;
+            width: 200px;
+            justify-content: center;
+            padding: 10px 15px;
+            font-size: 18px;
+            margin: 5px auto;
+            svg {
+              margin-right: 5px;
+            }
+          }
+        }
+        .attendenceStatus {
+          padding: 10px 25px;
+
+          .innerblock1 {
+            padding: 10px 2vw;
+            select {
+              margin-top: 10px;
+            }
+          }
+
+          .usertime {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-top: 20px;
+            gap: 20px;
+            .profile {
+              display: flex;
+              gap: 15px;
+
+              p {
+                font-size: 16px;
+              }
+            }
+            .ontime {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              .ontime {
+                font-size: 13px;
+              }
+              .perce {
+                margin-top: -10px;
+              }
+              p {
+                display: flex;
+              }
+            }
+          }
+        }
+        .timing {
+          .daycontainor {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 equal width columns */
+            row-gap: 2px;
+            font-size: 13px;
+            column-gap: 30px;
+
+            .circle {
+              width: 20px;
+              text-align: center;
+              padding: 1px 12px;
+              border-radius: 50%;
+              background-color: rgb(152, 150, 150);
+              border: 3px solid white;
+              color: white;
+              font-weight: 600;
+            }
+            .c1 {
+              background-color: #0275d8;
+            }
+
+            .circle:last-child {
+              grid-column: span 3; /* Span the last item across 3 columns */
+              justify-self: center; /* Center the last item horizontally */
+            }
+          }
+
+          .footer {
+            .bar {
+              height: 10px;
+              border-radius: 5px;
+              min-width: inherit;
+              background-color: #51fe63;
+            }
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="containor">
+      <div class="Actions">
+        <h2>Actions</h2>
+        <div class="innerblock">
+          <input type="text" id="liveTimeInput" />
+          <p>Partial Time</p>
+        </div>
+        <div class="innerblock">
+          <input type="text" id="liveDate" />
+          <p>Work From Home</p>
+        </div>
+        <button onclick="clockIn()">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clip-path="url(#clip0_466_361)">
+              <path
+                d="M18.2677 11.054C18.3112 10.7088 18.3337 10.3569 18.3337 9.99984C18.3337 5.39746 14.6027 1.6665 10.0003 1.6665C5.39795 1.6665 1.66699 5.39746 1.66699 9.99984C1.66699 14.6022 5.39795 18.3332 10.0003 18.3332C10.3632 18.3332 10.7206 18.31 11.0712 18.265M10.0003 4.99984V9.99984L13.1157 11.5575M15.8337 18.3332V13.3332M13.3337 15.8332H18.3337"
+                stroke="black"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_466_361">
+                <rect width="20" height="20" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+          Clock in
+        </button>
+      </div>
+      <div class="attendenceStatus">
+        <h2>Attendance Stats</h2>
+        <div class="innerblock1">
+          <select name="" id="" aria-placeholder="This Week">
+            <option value="This Week">This Week</option>
+          </select>
+          <div class="usertime">
+            <div class="profile">
+              <div class="image">
+                <svg
+                  width="50"
+                  height="50"
+                  viewBox="0 0 50 50"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="25" cy="25" r="25" fill="#0275D8" />
+                  <path
+                    d="M25 16C26.0609 16 27.0783 16.4214 27.8284 17.1716C28.5786 17.9217 29 18.9391 29 20C29 21.0609 28.5786 22.0783 27.8284 22.8284C27.0783 23.5786 26.0609 24 25 24C23.9391 24 22.9217 23.5786 22.1716 22.8284C21.4214 22.0783 21 21.0609 21 20C21 18.9391 21.4214 17.9217 22.1716 17.1716C22.9217 16.4214 23.9391 16 25 16ZM25 26C29.42 26 33 27.79 33 30V32H17V30C17 27.79 20.58 26 25 26Z"
+                    fill="white"
+                  />
+                </svg>
+              </div>
+              <p>Me</p>
+            </div>
+            <div class="ontime">
+              <p class="ontime" style="color: rgb(247, 136, 0)">
+                On-Time Arrival
+              </p>
+              <p class="perce">100%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="timing">
+        <h2>Timings</h2>
+        <div class="daycontainor">
+          <div class="circle c1">
+            <p>M</p>
+          </div>
+          <div class="circle">
+            <p>T</p>
+          </div>
+          <div class="circle">
+            <p>W</p>
+          </div>
+          <div class="circle">
+            <p>T</p>
+          </div>
+          <div class="circle">
+            <p>F</p>
+          </div>
+          <div class="circle">
+            <p>S</p>
+          </div>
+          <div class="circle">
+            <p>S</p>
+          </div>
+        </div>
+        <div class="footer">
+          <p>Today(9:30 AM - 6:00 PM)</p>
+          <div class="bar"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function updateLiveTime() {
+        var currentTime = new Date();
+        var hours = currentTime.getHours();
+        var minutes = currentTime.getMinutes();
+        var seconds = currentTime.getSeconds();
+        var meridiem = hours >= 12 ? "PM" : "AM";
+
+        // Convert hours to 12-hour format
+        hours = hours % 12;
+        hours = hours ? hours : 12; // Handle midnight (0 hours)
+
+        // Add leading zeros to minutes and seconds if needed
+        minutes = padZero(minutes);
+        seconds = padZero(seconds);
+
+        // Update the input tag with the formatted time
+        document.getElementById("liveTimeInput").value =
+          hours + ":" + minutes + ":" + seconds + " " + meridiem;
+
+        // Call this function again after 1 second to update the time
+        setTimeout(updateLiveTime, 1000);
+      }
+
+      function padZero(num) {
+        return (num < 10 ? "0" : "") + num;
+      }
+
+      function updateLiveDate() {
+        // Get current date
+        let currentDate = new Date();
+
+        // Format the date as Month Date Year
+        let options = { month: "short", day: "2-digit", year: "numeric" };
+        let formattedDate = currentDate.toLocaleDateString("en-US", options);
+
+        // Add suffix to the day (e.g., "th", "st", "nd")
+        let day = currentDate.getDate();
+        let suffix = "th";
+        if (day === 1 || day === 21 || day === 31) {
+          suffix = "st";
+        } else if (day === 2 || day === 22) {
+          suffix = "nd";
+        } else if (day === 3 || day === 23) {
+          suffix = "rd";
+        }
+
+        // Concatenate the suffix with the formatted date
+        formattedDate = formattedDate.replace(/(\d+)(\D)/, `$1${suffix}$2`);
+
+        // Update the input tag with the formatted date
+        document.getElementById("liveDate").value = formattedDate;
+      }
+
+      // Call the function to start displaying live time
+      updateLiveTime();
+      // Call the function initially and set up interval to update every second
+      updateLiveDate();
+      setInterval(updateLiveDate, 1000);
+    </script>
+  </body>
+</html>
